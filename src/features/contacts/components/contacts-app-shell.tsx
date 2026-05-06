@@ -4,27 +4,43 @@ import { TopBar } from './top-bar'
 import { RemindersPage } from '../pages/reminders-page'
 import { ContactsPage } from '../pages/contacts-page'
 import { HistoryPage } from '../pages/history-page'
-import type { TopLevelScreen } from '../types'
+import { AddContactPage } from '../pages/add-contact-page'
+import type { AppView, TopLevelScreen } from '../types'
 
 export function ContactsAppShell() {
-  const [activeScreen, setActiveScreen] = useState<TopLevelScreen>('reminders')
+  const [activeView, setActiveView] = useState<AppView>('reminders')
+  const activeScreen: TopLevelScreen =
+    activeView === 'add-contact' || activeView === 'add-event'
+      ? 'contacts'
+      : activeView
 
   let page = <RemindersPage />
 
-  if (activeScreen === 'contacts') {
-    page = <ContactsPage />
+  if (activeView === 'contacts') {
+    page = <ContactsPage onAddContact={() => setActiveView('add-contact')} />
   }
 
-  if (activeScreen === 'history') {
+  if (activeView === 'history') {
     page = <HistoryPage />
   }
+
+  if (activeView === 'add-contact') {
+    page = <AddContactPage onCancel={() => setActiveView('contacts')} />
+  }
+
+  const showBottomNav =
+    activeView === 'reminders' ||
+    activeView === 'contacts' ||
+    activeView === 'history'
 
   return (
     <div className="app-shell contacts-app">
       <div className="contacts-app__frame">
-        <TopBar />
+        <TopBar subdued={!showBottomNav} />
         <main className="contacts-app__main">{page}</main>
-        <BottomNav activeScreen={activeScreen} onSelect={setActiveScreen} />
+        {showBottomNav ? (
+          <BottomNav activeScreen={activeScreen} onSelect={setActiveView} />
+        ) : null}
       </div>
     </div>
   )

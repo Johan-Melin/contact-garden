@@ -4,29 +4,22 @@ import { ContactCard } from '../components/contact-card'
 const filters = ['All', 'Family', 'Friends', 'Colleague'] as const
 
 type ContactsPageProps = {
-  isHistoryPreview?: boolean
+  onAddContact?: () => void
 }
 
-export function ContactsPage({ isHistoryPreview = false }: ContactsPageProps) {
-  if (isHistoryPreview) {
-    return (
-      <div className="contacts-page contacts-page--history-preview">
-        <section className="hero-panel hero-panel--soft">
-          <div className="hero-panel__copy">
-            <p className="hero-panel__eyebrow">Next feature</p>
-            <h2>History is planned next.</h2>
-            <p>
-              The history screen will turn logged calls, messages, and meetups
-              into a readable relationship journal.
-            </p>
-          </div>
-        </section>
-      </div>
-    )
-  }
-
+export function ContactsPage({ onAddContact }: ContactsPageProps) {
   return (
     <div className="contacts-page">
+      <section className="contacts-page__header">
+        <div>
+          <p className="contacts-page__eyebrow">Circle Builder</p>
+          <h2>Contacts</h2>
+        </div>
+        <button type="button" className="contacts-page__add-button" onClick={onAddContact}>
+          Add contact
+        </button>
+      </section>
+
       <section className="contacts-toolbar">
         <label className="search-field">
           <span className="search-field__icon" aria-hidden="true">

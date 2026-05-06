@@ -3,6 +3,7 @@ export type ReminderStatus = 'overdue' | 'upcoming'
 export type ContactCategory = 'Family' | 'Friend' | 'Colleague'
 
 export type ContactAction = 'call' | 'message'
+export type ContactInterval = 'Weekly' | 'Bi-weekly' | 'Monthly' | 'Custom'
 
 export type Contact = {
   id: string
@@ -27,6 +28,7 @@ export type Reminder = {
 }
 
 export type TopLevelScreen = 'reminders' | 'contacts' | 'history'
+export type AppView = TopLevelScreen | 'add-contact' | 'add-event'
 
 export type HistoryEventType = 'phone' | 'message' | 'in-person' | 'video'
 

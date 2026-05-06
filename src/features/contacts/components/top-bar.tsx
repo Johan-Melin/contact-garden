@@ -1,8 +1,12 @@
 import { FlowerIcon } from './icons'
 
-export function TopBar() {
+type TopBarProps = {
+  subdued?: boolean
+}
+
+export function TopBar({ subdued = false }: TopBarProps) {
   return (
-    <header className="top-bar">
+    <header className={subdued ? 'top-bar top-bar--subdued' : 'top-bar'}>
       <div className="top-bar__identity">
         <div className="top-bar__avatar" aria-hidden="true">
           <FlowerIcon className="top-bar__avatar-icon" />
