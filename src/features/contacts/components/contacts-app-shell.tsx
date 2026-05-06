@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { BottomNav } from './bottom-nav'
 import { TopBar } from './top-bar'
 import { RemindersPage } from '../pages/reminders-page'
 import { ContactsPage } from '../pages/contacts-page'
@@ -41,11 +40,12 @@ export function ContactsAppShell() {
   return (
     <div className="app-shell contacts-app">
       <div className="contacts-app__frame">
-        <TopBar subdued={!showBottomNav} />
+        <TopBar
+          subdued={!showBottomNav}
+          activeScreen={showBottomNav ? activeScreen : undefined}
+          onNavigate={showBottomNav ? setActiveView : undefined}
+        />
         <main className="contacts-app__main">{page}</main>
-        {showBottomNav ? (
-          <BottomNav activeScreen={activeScreen} onSelect={setActiveView} />
-        ) : null}
       </div>
     </div>
   )
