@@ -82,3 +82,23 @@ export function ClockIcon(props: IconProps) {
     </svg>
   )
 }
+
+export function VideoIcon(props: IconProps) {
+  return (
+    <svg {...iconProps(props)}>
+      <rect x="3.5" y="6.5" width="11" height="11" rx="2.5" />
+      <path d="m14.5 10 5-2.5v9l-5-2.5" />
+    </svg>
+  )
+}
+
+export function InPersonIcon(props: IconProps) {
+  return (
+    <svg {...iconProps(props)}>
+      <circle cx="8" cy="9" r="2.5" />
+      <circle cx="16" cy="9" r="2.5" />
+      <path d="M4.5 18c.8-2 2-3 3.5-3s2.7 1 3.5 3" />
+      <path d="M12.5 18c.8-2 2-3 3.5-3s2.7 1 3.5 3" />
+    </svg>
+  )
+}

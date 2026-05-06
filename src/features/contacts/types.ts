@@ -27,3 +27,20 @@ export type Reminder = {
 }
 
 export type TopLevelScreen = 'reminders' | 'contacts' | 'history'
+
+export type HistoryEventType = 'phone' | 'message' | 'in-person' | 'video'
+
+export type HistoryEntry = {
+  id: string
+  name: string
+  timeLabel: string
+  eventType: HistoryEventType
+  imageUrl: string
+  ringColor: string
+}
+
+export type HistoryGroup = {
+  id: string
+  label: string
+  entries: HistoryEntry[]
+}

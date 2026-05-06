@@ -1,4 +1,4 @@
-import type { Contact, Reminder } from '../types'
+import type { Contact, HistoryGroup, Reminder } from '../types'
 
 export const overdueReminders: Reminder[] = [
   {
@@ -94,5 +94,56 @@ export const contacts: Contact[] = [
     action: 'call',
     imageUrl:
       'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=240&q=80',
+  },
+]
+
+export const historyGroups: HistoryGroup[] = [
+  {
+    id: 'this-week',
+    label: 'This Week',
+    entries: [
+      {
+        id: 'john-phone',
+        name: 'John',
+        timeLabel: '3 days ago',
+        eventType: 'phone',
+        ringColor: '#0f5238',
+        imageUrl:
+          'https://images.unsplash.com/photo-1507591064344-4c6ce005b128?auto=format&fit=crop&w=240&q=80',
+      },
+      {
+        id: 'sarah-message',
+        name: 'Sarah',
+        timeLabel: '4 days ago',
+        eventType: 'message',
+        ringColor: '#58a3fe',
+        imageUrl:
+          'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=240&q=80',
+      },
+    ],
+  },
+  {
+    id: 'last-week',
+    label: 'Last Week',
+    entries: [
+      {
+        id: 'michael-in-person',
+        name: 'Michael',
+        timeLabel: '8 days ago',
+        eventType: 'in-person',
+        ringColor: '#434a38',
+        imageUrl:
+          'https://images.unsplash.com/photo-1508341591423-4347099e1f19?auto=format&fit=crop&w=240&q=80',
+      },
+      {
+        id: 'elena-video',
+        name: 'Elena',
+        timeLabel: '10 days ago',
+        eventType: 'video',
+        ringColor: '#005fad',
+        imageUrl:
+          'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=240&q=80',
+      },
+    ],
   },
 ]

@@ -3,6 +3,7 @@ import { BottomNav } from './bottom-nav'
 import { TopBar } from './top-bar'
 import { RemindersPage } from '../pages/reminders-page'
 import { ContactsPage } from '../pages/contacts-page'
+import { HistoryPage } from '../pages/history-page'
 import type { TopLevelScreen } from '../types'
 
 export function ContactsAppShell() {
@@ -15,7 +16,7 @@ export function ContactsAppShell() {
   }
 
   if (activeScreen === 'history') {
-    page = <ContactsPage isHistoryPreview />
+    page = <HistoryPage />
   }
 
   return (
