@@ -16,9 +16,10 @@ const items: NavItem[] = [
 
 type BottomNavProps = {
   activeScreen: TopLevelScreen
+  onSelect: (screen: TopLevelScreen) => void
 }
 
-export function BottomNav({ activeScreen }: BottomNavProps) {
+export function BottomNav({ activeScreen, onSelect }: BottomNavProps) {
   return (
     <nav className="bottom-nav" aria-label="Primary">
       {items.map((item) => {
@@ -29,6 +30,7 @@ export function BottomNav({ activeScreen }: BottomNavProps) {
             type="button"
             className={isActive ? 'bottom-nav__item bottom-nav__item--active' : 'bottom-nav__item'}
             aria-current={isActive ? 'page' : undefined}
+            onClick={() => onSelect(item.id)}
           >
             {item.icon}
             <span>{item.label}</span>

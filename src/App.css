@@ -98,6 +98,17 @@
   box-shadow: var(--garden-shadow-float);
 }
 
+.hero-panel--soft {
+  background: linear-gradient(180deg, var(--garden-surface), var(--garden-surface-soft));
+  color: var(--garden-text);
+  box-shadow: var(--garden-shadow-soft);
+}
+
+.hero-panel--soft p,
+.hero-panel--soft .hero-panel__eyebrow {
+  color: var(--garden-text-muted);
+}
+
 .hero-panel__copy {
   display: grid;
   gap: var(--garden-space-2);
@@ -310,6 +321,198 @@
 .bottom-nav__item--active {
   background: var(--garden-primary);
   color: #ffffff;
+}
+
+.contacts-page {
+  display: grid;
+  gap: var(--garden-space-6);
+  padding-bottom: var(--garden-space-7);
+}
+
+.contacts-toolbar {
+  display: grid;
+  gap: var(--garden-space-4);
+}
+
+.search-field {
+  position: relative;
+  display: block;
+}
+
+.search-field__icon {
+  position: absolute;
+  inset: 0 auto 0 var(--garden-space-4);
+  display: flex;
+  align-items: center;
+  color: var(--garden-text-subtle);
+  font-size: 13px;
+  font-weight: 600;
+  pointer-events: none;
+}
+
+.search-field input {
+  width: 100%;
+  height: 52px;
+  border: 0;
+  border-radius: 18px;
+  background: var(--garden-surface);
+  box-shadow: var(--garden-shadow-soft);
+  padding: 0 var(--garden-space-4) 0 80px;
+  color: var(--garden-text);
+}
+
+.search-field input::placeholder {
+  color: var(--garden-text-subtle);
+}
+
+.filter-row {
+  display: flex;
+  gap: var(--garden-space-2);
+  overflow-x: auto;
+  padding-bottom: var(--garden-space-1);
+  scrollbar-width: none;
+}
+
+.filter-row::-webkit-scrollbar {
+  display: none;
+}
+
+.filter-chip {
+  border: 0;
+  background: var(--garden-surface-strong);
+  color: var(--garden-text-muted);
+  border-radius: var(--garden-radius-pill);
+  padding: 10px 14px;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.filter-chip--active {
+  background: var(--garden-primary-soft);
+  color: #dff6ea;
+}
+
+.contacts-list-section {
+  display: grid;
+  gap: var(--garden-space-4);
+}
+
+.contacts-list-section__header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: var(--garden-space-3);
+}
+
+.contacts-list-section__header h2 {
+  margin: 0;
+  font: 600 22px/1.27 var(--garden-font-heading);
+  color: var(--garden-primary);
+}
+
+.contacts-list-section__header span {
+  color: var(--garden-text-subtle);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.contacts-list {
+  display: grid;
+  gap: var(--garden-space-3);
+}
+
+.contact-card {
+  display: flex;
+  align-items: center;
+  gap: var(--garden-space-4);
+  padding: var(--garden-space-5);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: var(--garden-shadow-soft);
+  border: 1px solid rgba(15, 82, 56, 0.05);
+}
+
+.contact-card__ring {
+  --growth-progress: 50%;
+  width: 62px;
+  height: 62px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  padding: 4px;
+  background: conic-gradient(
+    from 180deg,
+    var(--garden-primary) var(--growth-progress),
+    #dfe4ff var(--growth-progress)
+  );
+}
+
+.contact-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid var(--garden-surface);
+}
+
+.contact-card__body {
+  min-width: 0;
+  flex: 1;
+}
+
+.contact-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--garden-space-3);
+}
+
+.contact-card__header h3 {
+  margin: 0;
+  font: 600 18px/1.3 var(--garden-font-heading);
+}
+
+.contact-card__meta,
+.contact-card__status {
+  margin: 0;
+  font-size: 14px;
+}
+
+.contact-card__meta {
+  color: var(--garden-text-muted);
+}
+
+.contact-card__status {
+  color: var(--garden-secondary);
+  font-weight: 600;
+}
+
+.contact-card__status--overdue {
+  color: var(--garden-error);
+}
+
+.contact-card__action {
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  background: var(--garden-primary-wash);
+  color: var(--garden-primary);
+}
+
+.chip--family {
+  background: #d8f1e2;
+  color: var(--garden-primary);
+}
+
+.chip--colleague {
+  background: #e5eadb;
+  color: #424937;
 }
 
 @media (max-width: 640px) {
