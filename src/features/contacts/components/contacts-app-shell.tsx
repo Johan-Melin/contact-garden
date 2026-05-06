@@ -5,6 +5,7 @@ import { RemindersPage } from '../pages/reminders-page'
 import { ContactsPage } from '../pages/contacts-page'
 import { HistoryPage } from '../pages/history-page'
 import { AddContactPage } from '../pages/add-contact-page'
+import { AddEventPage } from '../pages/add-event-page'
 import type { AppView, TopLevelScreen } from '../types'
 
 export function ContactsAppShell() {
@@ -21,11 +22,15 @@ export function ContactsAppShell() {
   }
 
   if (activeView === 'history') {
-    page = <HistoryPage />
+    page = <HistoryPage onAddEvent={() => setActiveView('add-event')} />
   }
 
   if (activeView === 'add-contact') {
     page = <AddContactPage onCancel={() => setActiveView('contacts')} />
+  }
+
+  if (activeView === 'add-event') {
+    page = <AddEventPage onCancel={() => setActiveView('history')} />
   }
 
   const showBottomNav =

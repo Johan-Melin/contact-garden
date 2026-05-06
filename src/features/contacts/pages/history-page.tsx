@@ -2,7 +2,11 @@ import { historyGroups } from '../data/mock-data'
 import { FlowerIcon } from '../components/icons'
 import { HistoryEntryCard } from '../components/history-entry-card'
 
-export function HistoryPage() {
+type HistoryPageProps = {
+  onAddEvent?: () => void
+}
+
+export function HistoryPage({ onAddEvent }: HistoryPageProps) {
   return (
     <div className="history-page">
       <section className="history-page__header">
@@ -10,7 +14,7 @@ export function HistoryPage() {
           <p className="history-page__eyebrow">Growth Journal</p>
           <h2>History</h2>
         </div>
-        <button type="button" className="history-page__add-button">
+        <button type="button" className="history-page__add-button" onClick={onAddEvent}>
           Add
         </button>
       </section>
