@@ -1,111 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700&display=swap');
+
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
-
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
-
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
+  --garden-background: #fbf8ff;
+  --garden-surface: #ffffff;
+  --garden-surface-soft: #f4f2ff;
+  --garden-surface-strong: #ececff;
+  --garden-surface-bar: #f0f4f2;
+  --garden-border: #d9dfdc;
+  --garden-border-strong: #bfc9c1;
+  --garden-text: #161a32;
+  --garden-text-muted: #55615c;
+  --garden-text-subtle: #707973;
+  --garden-primary: #0f5238;
+  --garden-primary-soft: #2d6a4f;
+  --garden-primary-tint: #b1f0ce;
+  --garden-primary-wash: #e7f4ec;
+  --garden-secondary: #005fad;
+  --garden-secondary-soft: #d4e3ff;
+  --garden-secondary-strong: #58a3fe;
+  --garden-error: #ba1a1a;
+  --garden-error-wash: #ffdad6;
+  --garden-shadow-soft: 0 4px 12px rgba(45, 106, 79, 0.08);
+  --garden-shadow-float: 0 10px 24px rgba(45, 106, 79, 0.12);
+  --garden-radius-sm: 8px;
+  --garden-radius-md: 12px;
+  --garden-radius-lg: 16px;
+  --garden-radius-pill: 999px;
+  --garden-space-1: 4px;
+  --garden-space-2: 8px;
+  --garden-space-3: 12px;
+  --garden-space-4: 16px;
+  --garden-space-5: 20px;
+  --garden-space-6: 24px;
+  --garden-space-7: 32px;
+  --garden-max-width: 600px;
+  --garden-font-heading: 'Plus Jakarta Sans', sans-serif;
+  --garden-font-body: 'Be Vietnam Pro', sans-serif;
+  font-family: var(--garden-font-body);
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--garden-text);
+  background: var(--garden-background);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
-}
-
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
+* {
   box-sizing: border-box;
+}
+
+html {
+  background: linear-gradient(180deg, #f7fbf8 0%, var(--garden-background) 24%);
 }
 
 body {
   margin: 0;
+  min-width: 320px;
+  min-height: 100svh;
+  background:
+    radial-gradient(circle at top left, rgba(45, 106, 79, 0.08), transparent 32%),
+    radial-gradient(circle at bottom right, rgba(88, 163, 254, 0.08), transparent 30%),
+    var(--garden-background);
+  color: var(--garden-text);
 }
 
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
+button,
+input,
+textarea,
+select {
+  font: inherit;
 }
 
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
-}
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
-}
-p {
-  margin: 0;
+button {
+  cursor: pointer;
 }
 
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
+img {
+  display: block;
+  max-width: 100%;
 }
 
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+a {
+  color: inherit;
+}
+
+#root {
+  min-height: 100svh;
 }
