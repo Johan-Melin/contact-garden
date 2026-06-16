@@ -39,7 +39,13 @@ export function ContactsAppShell() {
 
   return (
     <div className="app-shell contacts-app">
-      <div className="contacts-app__frame">
+      <div
+        className={
+          showBottomNav
+            ? 'contacts-app__frame contacts-app__frame--with-primary-nav'
+            : 'contacts-app__frame'
+        }
+      >
         <TopBar
           subdued={!showBottomNav}
           activeScreen={showBottomNav ? activeScreen : undefined}

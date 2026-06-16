@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Garden - Reminders Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Be+Vietnam+Pro:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Be Vietnam Pro', sans-serif;
+        }
+        h1, h2, h3, .brand-font {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#0f5238",
+                        "secondary": "#005fad",
+                        "on-tertiary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "surface-container": "#ececff",
+                        "surface-bright": "#fbf8ff",
+                        "inverse-surface": "#2b2f48",
+                        "secondary-fixed-dim": "#a4c9ff",
+                        "on-surface": "#161a32",
+                        "on-tertiary-fixed": "#171e0e",
+                        "on-secondary-fixed-variant": "#004884",
+                        "tertiary-fixed-dim": "#c2c9b1",
+                        "tertiary-container": "#5b624e",
+                        "secondary-container": "#58a3fe",
+                        "on-surface-variant": "#404943",
+                        "on-secondary": "#ffffff",
+                        "primary-container": "#2d6a4f",
+                        "secondary-fixed": "#d4e3ff",
+                        "on-tertiary-container": "#d6ddc4",
+                        "surface-tint": "#2c694e",
+                        "surface-dim": "#d5d8f9",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error": "#ffffff",
+                        "surface-container-high": "#e5e6ff",
+                        "on-primary-container": "#a8e7c5",
+                        "on-secondary-container": "#003869",
+                        "surface-container-highest": "#dee0ff",
+                        "on-tertiary-fixed-variant": "#424937",
+                        "primary-fixed": "#b1f0ce",
+                        "outline-variant": "#bfc9c1",
+                        "on-background": "#161a32",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed": "#dee6cc",
+                        "surface-variant": "#dee0ff",
+                        "on-secondary-fixed": "#001c39",
+                        "inverse-on-surface": "#f0efff",
+                        "surface-container-low": "#f4f2ff",
+                        "outline": "#707973",
+                        "tertiary": "#434a38",
+                        "on-primary-fixed": "#002114",
+                        "inverse-primary": "#95d4b3",
+                        "on-primary-fixed-variant": "#0e5138",
+                        "primary-fixed-dim": "#95d4b3",
+                        "error-container": "#ffdad6",
+                        "surface": "#fbf8ff",
+                        "on-error-container": "#93000a",
+                        "background": "#fbf8ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "lg": "24px",
+                        "container-padding": "20px",
+                        "md": "16px",
+                        "unit": "4px",
+                        "sm": "8px",
+                        "xl": "32px",
+                        "gutter": "12px"
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                        "headline-lg": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "headline-md": ["22px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background min-h-screen">
+<!-- SideNavBar (Shared Component) -->
+<nav class="fixed left-0 top-0 bottom-0 flex flex-col p-6 w-72 h-screen border-r border-emerald-100 bg-emerald-50/30 shadow-sm z-50">
+<div class="flex items-center gap-3 mb-10">
+<div class="w-10 h-10 bg-primary-container rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-white" data-icon="local_florist">local_florist</span>
+</div>
+<div>
+<h1 class="text-2xl font-extrabold text-emerald-900 leading-tight">Garden</h1>
+<p class="text-xs font-label-sm text-emerald-700">Digital Gardener</p>
+</div>
+</div>
+<div class="flex-1 space-y-2">
+<button class="w-full flex items-center gap-4 px-4 py-3 rounded-xl text-slate-500 hover:bg-emerald-100/30 transition-colors duration-200 group active:scale-[0.98]">
+<span class="material-symbols-outlined" data-icon="person_book">person_book</span>
+<span class="font-medium text-sm">Contacts</span>
+</button>
+<button class="w-full flex items-center gap-4 px-4 py-3 rounded-xl text-slate-500 hover:bg-emerald-100/30 transition-colors duration-200 group active:scale-[0.98]">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="font-medium text-sm">History</span>
+</button>
+<!-- Active Tab: Reminders -->
+<button class="w-full flex items-center gap-4 px-4 py-3 rounded-xl text-emerald-700 font-bold border-r-4 border-emerald-600 bg-emerald-100/50 active:scale-[0.98] transition-transform duration-150">
+<span class="material-symbols-outlined" data-icon="alarm_on">alarm_on</span>
+<span class="font-medium text-sm">Reminders</span>
+</button>
+</div>
+<div class="mb-8">
+<button class="w-full py-4 bg-primary text-white rounded-xl font-bold flex items-center justify-center gap-2 shadow-lg shadow-emerald-900/10 active:scale-[0.98] transition-transform">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+                Add Connection
+            </button>
+</div>
+<div class="pt-6 border-t border-emerald-100 space-y-2">
+<button class="w-full flex items-center gap-4 px-4 py-3 rounded-xl text-slate-500 hover:bg-emerald-100/30 transition-colors duration-200">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-medium text-sm">Settings</span>
+</button>
+<button class="w-full flex items-center gap-4 px-4 py-3 rounded-xl text-slate-500 hover:bg-emerald-100/30 transition-colors duration-200">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="font-medium text-sm">Support</span>
+</button>
+<div class="flex items-center gap-3 px-4 py-4 mt-4 bg-white rounded-xl shadow-sm">
+<img alt="User profile" class="w-10 h-10 rounded-full object-cover" data-alt="A professional portrait of a woman with a warm, friendly expression, set against a soft, sunlit interior with lush houseplants in the background. The aesthetic is clean, modern, and empathetic, reflecting the nurturing brand of the Garden digital relationship assistant. High-key lighting highlights the natural textures and green color palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnJqr1fk0vORIRgGRglQ_JTOBZwNwx9vb03PBBiEtL_gH8LUnzPmuNqM7iC7NIL5sdlE5kzaQcH87rkpj6b92kPYLevIIP9n4ASHWJvb_hqY08hVOiz4jPw0xXeq9S3WbTExFgzlrOOyDDdHU2tgrqjdaQ9P-y9_CDiuAKZYtYNmcMDLxI0N3xuD642YO3FU3Pg05GKOT4m6v1SrnT0qByjuwNrZ082kw0rNMBk9-m3VBwR5DmMJ7FMzREq0VqLikylI2rrlihn4A"/>
+<div>
+<p class="text-sm font-bold text-on-surface">Alex Rivera</p>
+<p class="text-xs text-slate-400">Pro Gardener</p>
+</div>
+</div>
+</div>
+</nav>
+<!-- TopAppBar (Shared Component) -->
+<header class="fixed top-0 right-0 left-72 z-40 flex items-center justify-between px-8 w-full h-16 border-b border-emerald-100 bg-white/80 backdrop-blur-md">
+<div class="flex items-center gap-4 w-96">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg" data-icon="search">search</span>
+<input class="w-full bg-slate-100 border-none rounded-full py-2 pl-10 pr-4 text-sm focus:ring-2 focus:ring-emerald-500 focus:bg-white transition-all" placeholder="Search contacts or notes..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<button class="text-slate-400 hover:text-emerald-600 transition-colors relative">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="text-slate-400 hover:text-emerald-600 transition-colors">
+<span class="material-symbols-outlined" data-icon="local_florist">local_florist</span>
+</button>
+<div class="h-8 w-px bg-slate-200"></div>
+<div class="flex items-center gap-2">
+<span class="text-sm font-semibold text-emerald-800">Garden Reminders</span>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pl-72 pt-16 min-h-screen bg-surface-container-low">
+<div class="max-w-[1400px] mx-auto p-10">
+<div class="flex items-end justify-between mb-10">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Cultivate Your Circle</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2">Nurture these connections today to keep your garden thriving.</p>
+</div>
+<div class="flex gap-2 bg-white p-1 rounded-xl shadow-sm border border-emerald-100">
+<button class="px-4 py-2 bg-emerald-100 text-emerald-800 rounded-lg text-sm font-bold">List View</button>
+<button class="px-4 py-2 text-slate-500 hover:bg-slate-50 rounded-lg text-sm font-medium">Calendar</button>
+</div>
+</div>
+<!-- Dashboard Columns (Bento-style 3-Column Layout) -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Column: Overdue -->
+<div class="flex flex-col gap-6">
+<div class="flex items-center justify-between px-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-error" data-icon="error_outline">error_outline</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Overdue</h3>
+</div>
+<span class="bg-error-container text-on-error-container px-3 py-1 rounded-full text-xs font-bold">3 Needs Water</span>
+</div>
+<!-- Overdue Cards -->
+<div class="space-y-4">
+<div class="bg-white rounded-xl p-5 shadow-sm border-l-4 border-error hover:shadow-md transition-shadow group cursor-pointer">
+<div class="flex items-start justify-between mb-4">
+<div class="flex items-center gap-4">
+<div class="relative">
+<img alt="Marcus Chen" class="w-14 h-14 rounded-full object-cover border-2 border-white shadow-sm" data-alt="Close-up portrait of a middle-aged man with kind eyes and a grey beard, smiling warmly. The photo is taken in a natural outdoor setting with soft sunlight filtering through leaves, creating a dappled light effect. The atmosphere is peaceful and authentic, matching the digital gardener aesthetic of deep, sincere human connection." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGdScBflm12eUSMNgspDpaPlLIdQ8n1WDoLXoApnyG7exVhepv8iX48onhw9ol9mvW-lhtEsEmGAi2ifhT8abmEKNW8-451VB46B2v0TY_X-KU5Wb9bN7_Wy58N3BLvNAZeVr0kmmbGPOKEIbBlPplMwzF6BP5NWB4tKr1aShZp0tMJ8MkoTm6JfC2ke_yvgVcNvzMwZemqQx1rmb7hk7f2czjFgWvLf2W_xsbgkzZA9kPomgN9CLm5EMxr792nmRET3iZaSCjAdw"/>
+<div class="absolute -bottom-1 -right-1 w-6 h-6 bg-error rounded-full flex items-center justify-center border-2 border-white">
+<span class="material-symbols-outlined text-[14px] text-white" data-icon="priority_high">priority_high</span>
+</div>
+</div>
+<div>
+<h4 class="font-bold text-on-surface group-hover:text-primary transition-colors">Marcus Chen</h4>
+<p class="text-xs text-slate-400">Last spoke: 3 months ago</p>
+</div>
+</div>
+<span class="bg-slate-100 text-slate-600 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Family</span>
+</div>
+<p class="text-sm text-on-surface-variant line-clamp-2 italic mb-4 bg-emerald-50/50 p-3 rounded-lg border border-emerald-100/50">
+                                "Remind me to ask about his new puppy, Luna, and the marathon training."
+                            </p>
+<button class="w-full py-3 bg-error text-white rounded-lg text-sm font-bold hover:bg-red-700 transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="send">send</span>
+                                Send a Message
+                            </button>
+</div>
+<div class="bg-white rounded-xl p-5 shadow-sm border-l-4 border-error hover:shadow-md transition-shadow group cursor-pointer">
+<div class="flex items-start justify-between mb-4">
+<div class="flex items-center gap-4">
+<img alt="Sasha Grey" class="w-14 h-14 rounded-full object-cover border-2 border-white shadow-sm" data-alt="A portrait of a young woman with a thoughtful expression, looking away from the camera. The background is a soft-focus urban library with warm wood tones. The lighting is gentle and side-lit, creating a sophisticated and intellectual mood consistent with a modern personal journal aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxAI8uMtws4TvBud5GprHFy_vJzSmfvoHAH6G_dyCWLLausnGJ8DVuCXBvHQ0r1L8KTNrO0ssvdRxHtJ9Kp60GCGHF9w4O7vJ0rtnv56fOBlxd6kmfxYxn8GDTwc9NG0vwNzorFx0G67Ck8gCoHwoNO3JYkAodycTw4dT-yHxsUPJ8GAoyOm6nqqSWHyI6dge1m_AMPw6WA588fKwYv7tf67gOtagv3vQS2OxQRWmQYbIqfxMI8x6NsPGfB7KkcX7J7DHbkdTaVwI"/>
+<div>
+<h4 class="font-bold text-on-surface group-hover:text-primary transition-colors">Sasha Grey</h4>
+<p class="text-xs text-slate-400">Last spoke: 1 month ago</p>
+</div>
+</div>
+<span class="bg-slate-100 text-slate-600 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Work</span>
+</div>
+<button class="w-full py-3 border-2 border-error text-error rounded-lg text-sm font-bold hover:bg-error/5 transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="call">call</span>
+                                Call Sasha
+                            </button>
+</div>
+</div>
+</div>
+<!-- Column: Upcoming -->
+<div class="flex flex-col gap-6">
+<div class="flex items-center justify-between px-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary" data-icon="schedule">schedule</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Upcoming</h3>
+</div>
+<span class="bg-secondary-fixed text-on-secondary-fixed px-3 py-1 rounded-full text-xs font-bold">5 Soon</span>
+</div>
+<!-- Upcoming Cards -->
+<div class="space-y-4">
+<div class="bg-white rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow group cursor-pointer relative overflow-hidden">
+<div class="absolute top-0 right-0 w-24 h-24 -mr-8 -mt-8 bg-secondary/5 rounded-full"></div>
+<div class="flex items-start justify-between mb-4 relative">
+<div class="flex items-center gap-4">
+<div class="relative">
+<svg class="absolute -inset-1 w-16 h-16 transform -rotate-90">
+<circle class="text-slate-100" cx="32" cy="32" fill="transparent" r="30" stroke="currentColor" stroke-width="3"></circle>
+<circle class="text-secondary" cx="32" cy="32" fill="transparent" r="30" stroke="currentColor" stroke-dasharray="188.4" stroke-dashoffset="47" stroke-width="3"></circle>
+</svg>
+<img alt="David Park" class="w-14 h-14 rounded-full object-cover border-2 border-white shadow-sm" data-alt="A smiling man with stylish glasses in a modern, creative studio environment. The lighting is bright and airy with pops of primary colors in the background decor. The image conveys energy and professional creativity, fitting into the relationship growth theme of the Garden app." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWCGsKIaJMODzJcIioam0GaWgVKM-IZycYfVd2zEV7Svl9akke8CaiJCmtGHv_CHrVKaM4uTBZuxdPyUj5OuGQXAIP-2XBXccdt57iN4lz_WsSAvgsOT7FpHeUWm-z-zPQKv8vozfWYZt7wQRMghZPslKoDIu-2ae_fQ8yrezetqSrpvUZwN_Af2FBnYbA3DBngfbUyQTg6gWOGGpqczInWCrD5EqJ1oAwhT6LYvFZo6gO0ueDWu_o81sETFEeS9Qwf70YUwJU-U4"/>
+</div>
+<div>
+<h4 class="font-bold text-on-surface group-hover:text-primary transition-colors">David Park</h4>
+<p class="text-xs text-slate-400">Due in 2 days</p>
+</div>
+</div>
+<span class="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Close Friends</span>
+</div>
+<div class="flex items-center gap-2 text-xs text-secondary font-bold mb-4">
+<span class="material-symbols-outlined text-sm" data-icon="cake">cake</span>
+                                Birthday approaching June 12
+                            </div>
+<div class="flex gap-2">
+<button class="flex-1 py-2 bg-secondary text-white rounded-lg text-sm font-bold hover:opacity-90 transition-opacity">Gift Idea</button>
+<button class="flex-1 py-2 bg-slate-100 text-slate-700 rounded-lg text-sm font-bold hover:bg-slate-200">Dismiss</button>
+</div>
+</div>
+<div class="bg-white rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow group cursor-pointer">
+<div class="flex items-start justify-between mb-4">
+<div class="flex items-center gap-4">
+<img alt="Elena Rodriguez" class="w-14 h-14 rounded-full object-cover border-2 border-white shadow-sm" data-alt="A portrait of a woman with a confident smile, standing in a bright office space with large windows and minimalist furniture. The lighting is natural and high-contrast, highlighting her professional yet approachable demeanor. The image represents a healthy, well-maintained professional relationship." src="https://lh3.googleusercontent.com/aida-public/AB6AXuATzfaD8ZiQC916wAa8F__UiloGhAGBdjQg6ynnG6zNyvlOPq0RVxS2BtVb12t5QKTS7ORXWUf76bh7U9ybNCo1Q63pROaSrIfQXSYEX4OGLvdMJlpspwAs7SC5Rz5NHy7T9gtmsoyyE_jQCgIccfOOeda2ifSnvja-P4Fp4QJpzYKahXMNr9pNMyc2IbyShJBUV_snlQQbNXA1HvciFjyi4eoY96fxh1VnjV_RE48MicK_937cRQ60_ZcXUaMnhZRFs0KC8fJAUXU"/>
+<div>
+<h4 class="font-bold text-on-surface group-hover:text-primary transition-colors">Elena Rodriguez</h4>
+<p class="text-xs text-slate-400">Follow up in 4 days</p>
+</div>
+</div>
+<span class="bg-slate-100 text-slate-600 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Work</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Column: On Track -->
+<div class="flex flex-col gap-6">
+<div class="flex items-center justify-between px-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="check_circle">check_circle</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">On Track</h3>
+</div>
+<span class="bg-primary-fixed text-on-primary-fixed px-3 py-1 rounded-full text-xs font-bold">12 Flourishing</span>
+</div>
+<!-- On Track Cards -->
+<div class="space-y-4">
+<div class="bg-white/60 border border-emerald-100/50 rounded-xl p-5 shadow-sm hover:shadow-md transition-all group cursor-pointer">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-4 opacity-80">
+<div class="relative">
+<svg class="absolute -inset-1 w-16 h-16 transform -rotate-90">
+<circle class="text-slate-100" cx="32" cy="32" fill="transparent" r="30" stroke="currentColor" stroke-width="3"></circle>
+<circle class="text-primary" cx="32" cy="32" fill="transparent" r="30" stroke="currentColor" stroke-dasharray="188.4" stroke-dashoffset="10" stroke-width="3"></circle>
+</svg>
+<img alt="Jordan Lee" class="w-14 h-14 rounded-full object-cover border-2 border-white shadow-sm" data-alt="Portrait of a laughing man in his 20s, leaning against a weathered brick wall in a trendy neighborhood. The lighting is warm golden hour, creating a joyful, relaxed vibe. The visual style is candid and vibrant, emphasizing the 'flourishing' state of a close social connection." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxAHv-chhOaJL494YFdSKix77tNnm7Lb0UA-80eHgvj-evNyZoYw2WEb6zT0oz0JQMr8djcKQW05CrX_DYKwEcUEN_quSHcBzAII7924Y6zyyNSXkiNrMuXKaz--DIRJQ2-hprtf3BoO6G0PbYiPrQwaukaKwA52ip7U5wNIojkoQzuMaRNyWymeaaDcLUVpYPkCw5qHk7NI68Q3exsymbw4nrB-5S2NLCMRzarAXxTbRCB-ht9n2NB5mI8jO7qasQk8X_T8-8_TM"/>
+</div>
+<div>
+<h4 class="font-bold text-on-surface">Jordan Lee</h4>
+<p class="text-xs text-slate-400">Caught up yesterday</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-primary" data-icon="verified">verified</span>
+</div>
+</div>
+<div class="bg-white/60 border border-emerald-100/50 rounded-xl p-5 shadow-sm hover:shadow-md transition-all group cursor-pointer">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-4 opacity-80">
+<img alt="Maya Thompson" class="w-14 h-14 rounded-full object-cover border-2 border-white shadow-sm" data-alt="A portrait of a serene woman with glasses sitting in a sun-drenched cafe. Her expression is calm and content. The setting is filled with soft textures, plants, and natural light, perfectly embodying the tactile modernism and nurturing personality of the Garden app brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgQi1oG1MBVA97Q68FiT6YfblglHYNOXxUyIgK50eS1kXp7T7rBcGoaSNbLmoQn9BFNEaJJ72D6bbegbtrQk7KA61hUwhdnAUgf92U_eeGKJaaBZKuakgvBudSoSxcoRSGD7I9IosI9d6mzYjlg8MpOnGmAGd4Ux6ZsZov5JxmlCU5UdtBnJhOlBl_ggO7mrI8f0DqW_HeV3aC6hvfIDQ4vAofit2bUsSpvJFkJ1sdw8cYjEzunOtNXjIv98JpN59YmE3l4jlDOCw"/>
+<div>
+<h4 class="font-bold text-on-surface">Maya Thompson</h4>
+<p class="text-xs text-slate-400">Caught up 3 days ago</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-primary" data-icon="verified">verified</span>
+</div>
+</div>
+<!-- Empty State Filler / Future Growth -->
+<div class="border-2 border-dashed border-emerald-200/50 rounded-xl p-10 flex flex-col items-center justify-center text-center">
+<span class="material-symbols-outlined text-emerald-200 text-4xl mb-2" data-icon="spa">spa</span>
+<p class="text-xs text-slate-400 font-medium">Space for more growth</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Dashboard Stats Bento Footer -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6 mt-12">
+<div class="bg-primary-container text-on-primary-container p-6 rounded-2xl shadow-lg flex flex-col justify-between">
+<p class="text-sm font-bold opacity-80">Garden Health</p>
+<div class="mt-4">
+<span class="text-4xl font-extrabold">92%</span>
+<p class="text-xs mt-1">Excellent cultivation</p>
+</div>
+</div>
+<div class="bg-white p-6 rounded-2xl shadow-sm border border-emerald-100 flex flex-col justify-between">
+<p class="text-sm font-bold text-slate-500">Total Contacts</p>
+<div class="mt-4">
+<span class="text-4xl font-extrabold text-on-surface">48</span>
+<p class="text-xs text-emerald-600 mt-1">+2 this month</p>
+</div>
+</div>
+<div class="bg-white p-6 rounded-2xl shadow-sm border border-emerald-100 flex flex-col justify-between">
+<p class="text-sm font-bold text-slate-500">Interaction Velocity</p>
+<div class="mt-4">
+<span class="text-4xl font-extrabold text-on-surface">4.2</span>
+<p class="text-xs text-slate-400 mt-1">Touches per week</p>
+</div>
+</div>
+<div class="bg-secondary p-6 rounded-2xl shadow-lg flex flex-col justify-between text-white">
+<p class="text-sm font-bold opacity-80">Next Major Milestone</p>
+<div class="mt-4">
+<p class="text-lg font-bold leading-tight">David's 30th Birthday</p>
+<p class="text-xs opacity-80">Friday, June 12</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- FAB Action Button -->
+<button class="fixed bottom-10 right-10 w-16 h-16 bg-primary text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-50">
+<span class="material-symbols-outlined text-3xl" data-icon="add_comment">add_comment</span>
+</button>
+</body></html>

@@ -1016,3 +1016,65 @@
     display: none;
   }
 }
+
+@media (min-width: 980px) {
+  .contacts-app {
+    padding: var(--garden-space-4);
+  }
+
+  .contacts-app__frame {
+    max-width: 1240px;
+    border-radius: 28px;
+    overflow: clip;
+    box-shadow: 0 24px 60px rgba(22, 26, 50, 0.08);
+  }
+
+  .contacts-app__frame--with-primary-nav {
+    padding-left: 280px;
+  }
+
+  .contacts-app__frame--with-primary-nav .contacts-app__main {
+    padding: var(--garden-space-7);
+  }
+
+  .contacts-app__frame--with-primary-nav .top-bar {
+    top: var(--garden-space-4);
+    left: auto;
+    width: 248px;
+    min-height: calc(100svh - 32px);
+    padding: var(--garden-space-6);
+    border-right: 1px solid rgba(15, 82, 56, 0.08);
+    border-bottom: 0;
+    border-radius: 28px 0 0 28px;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-between;
+  }
+
+  .contacts-app__frame--with-primary-nav .top-bar__identity {
+    flex: 0 0 auto;
+    align-items: flex-start;
+  }
+
+  .contacts-app__frame--with-primary-nav .top-bar__nav {
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: var(--garden-space-3);
+  }
+
+  .contacts-app__frame--with-primary-nav .top-bar__nav-item {
+    min-height: 48px;
+    justify-content: flex-start;
+    padding: 0 16px;
+  }
+
+  .contacts-app__frame--with-primary-nav .top-bar__nav-label {
+    display: inline;
+  }
+
+  .contacts-app__frame--with-primary-nav .icon-button {
+    width: 100%;
+    min-height: 46px;
+  }
+}

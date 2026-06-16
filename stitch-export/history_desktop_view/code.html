@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Garden - Relationship History</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Be+Vietnam+Pro:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary": "#0f5238",
+                      "secondary": "#005fad",
+                      "on-tertiary": "#ffffff",
+                      "error": "#ba1a1a",
+                      "surface-container": "#ececff",
+                      "surface-bright": "#fbf8ff",
+                      "inverse-surface": "#2b2f48",
+                      "secondary-fixed-dim": "#a4c9ff",
+                      "on-surface": "#161a32",
+                      "on-tertiary-fixed": "#171e0e",
+                      "on-secondary-fixed-variant": "#004884",
+                      "tertiary-fixed-dim": "#c2c9b1",
+                      "tertiary-container": "#5b624e",
+                      "secondary-container": "#58a3fe",
+                      "on-surface-variant": "#404943",
+                      "on-secondary": "#ffffff",
+                      "primary-container": "#2d6a4f",
+                      "secondary-fixed": "#d4e3ff",
+                      "on-tertiary-container": "#d6ddc4",
+                      "surface-tint": "#2c694e",
+                      "surface-dim": "#d5d8f9",
+                      "surface-container-lowest": "#ffffff",
+                      "on-error": "#ffffff",
+                      "surface-container-high": "#e5e6ff",
+                      "on-primary-container": "#a8e7c5",
+                      "on-secondary-container": "#003869",
+                      "surface-container-highest": "#dee0ff",
+                      "on-tertiary-fixed-variant": "#424937",
+                      "primary-fixed": "#b1f0ce",
+                      "outline-variant": "#bfc9c1",
+                      "on-background": "#161a32",
+                      "on-primary": "#ffffff",
+                      "tertiary-fixed": "#dee6cc",
+                      "surface-variant": "#dee0ff",
+                      "on-secondary-fixed": "#001c39",
+                      "inverse-on-surface": "#f0efff",
+                      "surface-container-low": "#f4f2ff",
+                      "outline": "#707973",
+                      "tertiary": "#434a38",
+                      "on-primary-fixed": "#002114",
+                      "inverse-primary": "#95d4b3",
+                      "on-primary-fixed-variant": "#0e5138",
+                      "primary-fixed-dim": "#95d4b3",
+                      "error-container": "#ffdad6",
+                      "surface": "#fbf8ff",
+                      "on-error-container": "#93000a",
+                      "background": "#fbf8ff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "xs": "4px",
+                      "lg": "24px",
+                      "container-padding": "20px",
+                      "md": "16px",
+                      "unit": "4px",
+                      "sm": "8px",
+                      "xl": "32px",
+                      "gutter": "12px"
+              },
+              "fontFamily": {
+                      "label-sm": ["Be Vietnam Pro"],
+                      "body-md": ["Be Vietnam Pro"],
+                      "body-lg": ["Be Vietnam Pro"],
+                      "headline-lg": ["Plus Jakarta Sans"],
+                      "label-md": ["Be Vietnam Pro"],
+                      "headline-md": ["Plus Jakarta Sans"]
+              },
+              "fontSize": {
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                      "headline-lg": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                      "headline-md": ["22px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-nav-border {
+            box-shadow: inset -4px 0 0 0 #0f5238;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #d6ddc4;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background font-body-md text-on-background min-h-screen flex">
+<!-- SideNavBar (Persistent Shell) -->
+<aside class="fixed left-0 top-0 bottom-0 flex flex-col p-6 w-72 h-screen border-r border-emerald-100 dark:border-emerald-900/30 bg-emerald-50/30 dark:bg-slate-950 shadow-sm dark:shadow-none z-50">
+<div class="mb-xl">
+<h1 class="text-2xl font-extrabold text-emerald-900 dark:text-emerald-50 font-headline-lg">Garden</h1>
+<p class="font-label-sm text-on-surface-variant">Digital Gardener</p>
+</div>
+<div class="flex flex-col gap-sm flex-1">
+<a class="flex items-center gap-md p-md rounded-lg text-slate-500 dark:text-slate-400 hover:text-emerald-600 hover:bg-emerald-100/30 dark:hover:bg-emerald-900/10 transition-colors duration-200 active:scale-[0.98] transition-transform duration-150 font-plus-jakarta-sans text-sm font-medium" href="#">
+<span class="material-symbols-outlined">person_book</span>
+                Contacts
+            </a>
+<!-- History is Active -->
+<a class="flex items-center gap-md p-md rounded-lg text-emerald-700 dark:text-emerald-300 font-bold border-r-4 border-emerald-600 bg-emerald-100/50 dark:bg-emerald-900/20 active:scale-[0.98] transition-transform duration-150 font-plus-jakarta-sans text-sm" href="#">
+<span class="material-symbols-outlined">history</span>
+                History
+            </a>
+<a class="flex items-center gap-md p-md rounded-lg text-slate-500 dark:text-slate-400 hover:text-emerald-600 hover:bg-emerald-100/30 dark:hover:bg-emerald-900/10 transition-colors duration-200 active:scale-[0.98] transition-transform duration-150 font-plus-jakarta-sans text-sm font-medium" href="#">
+<span class="material-symbols-outlined">alarm_on</span>
+                Reminders
+            </a>
+</div>
+<button class="mt-lg mb-xl w-full py-md px-lg bg-primary text-on-primary rounded-xl font-label-md flex items-center justify-center gap-sm shadow-md hover:bg-primary-container transition-all active:scale-95">
+<span class="material-symbols-outlined text-[20px]">add_circle</span>
+            Add Connection
+        </button>
+<div class="border-t border-emerald-100 pt-xl mt-auto">
+<a class="flex items-center gap-md p-md rounded-lg text-slate-500 dark:text-slate-400 hover:text-emerald-600 hover:bg-emerald-100/30 dark:hover:bg-emerald-900/10 transition-colors duration-200 font-plus-jakarta-sans text-sm font-medium" href="#">
+<span class="material-symbols-outlined">settings</span>
+                Settings
+            </a>
+<a class="flex items-center gap-md p-md rounded-lg text-slate-500 dark:text-slate-400 hover:text-emerald-600 hover:bg-emerald-100/30 dark:hover:bg-emerald-900/10 transition-colors duration-200 font-plus-jakarta-sans text-sm font-medium" href="#">
+<span class="material-symbols-outlined">help</span>
+                Support
+            </a>
+<div class="flex items-center gap-md mt-xl p-md">
+<img alt="User profile" class="w-10 h-10 rounded-full border-2 border-primary-fixed shadow-sm" data-alt="A professional and friendly close-up portrait of a woman with a warm expression, set against a soft, out-of-focus botanical garden background. The lighting is natural and diffuse, highlighting the vibrant greens and soft earthy tones. The overall aesthetic is clean and modern, matching a premium digital lifestyle application's high-key light mode interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGri1omsp9oeB_ZcTeMSNHB9qBTfOvFxt1mdJGHgHLm6JhW-CYOvAIdVdALy4S1P6XoOhKuV8u7vdIpkbOFdXZxf2Xe4THM1cH94JNxT54Ejgqv4tMxRPydxH6DB-eHi7Y4zsu5R5Nz8OIeKNfTy7OzjxVPKOPxNvjsA0tcKuCoN5vieDbGcogglkxmOfElO79XDeKY1dwluIpsSTfMZqe4PGmWyy7DjElap_anY69qGMVrGTrlFgcRj661JHrK1kiO8cuIPq-pxI"/>
+<div>
+<p class="text-label-md text-on-surface">Elena Moss</p>
+<p class="text-label-sm text-on-surface-variant">Core Gardener</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 ml-72 min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="fixed top-0 right-0 left-72 z-40 flex items-center justify-between px-8 w-full h-16 border-b border-emerald-100 dark:border-emerald-900/30 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-sm dark:shadow-none">
+<div class="flex items-center bg-surface-container-low rounded-full px-lg py-xs w-96">
+<span class="material-symbols-outlined text-outline">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-full placeholder:text-outline-variant font-body-md" placeholder="Search interaction logs..." type="text"/>
+</div>
+<div class="flex items-center gap-lg">
+<div class="flex items-center gap-md">
+<button class="p-sm rounded-full hover:bg-emerald-50 text-emerald-800 transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-sm rounded-full hover:bg-emerald-50 text-emerald-800 transition-colors">
+<span class="material-symbols-outlined">local_florist</span>
+</button>
+</div>
+<div class="h-8 w-[1px] bg-emerald-100"></div>
+<button class="bg-primary-fixed text-on-primary-fixed py-sm px-lg rounded-full font-label-md flex items-center gap-sm active:opacity-80 transition-all">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                    Add Event
+                </button>
+</div>
+</header>
+<!-- Content Body -->
+<section class="mt-16 p-xl custom-scrollbar overflow-y-auto">
+<div class="max-w-6xl mx-auto">
+<!-- Page Header -->
+<div class="flex items-end justify-between mb-xl">
+<div>
+<h2 class="font-headline-lg text-primary mb-xs">Interaction History</h2>
+<p class="text-body-md text-on-surface-variant">Review the seeds of connection you've planted lately.</p>
+</div>
+<div class="flex gap-sm">
+<button class="flex items-center gap-xs px-md py-sm bg-surface-container-lowest border border-outline-variant rounded-lg text-label-md text-on-surface hover:bg-emerald-50 transition-colors">
+<span class="material-symbols-outlined text-[18px]">filter_list</span>
+                            Filter
+                        </button>
+<button class="flex items-center gap-xs px-md py-sm bg-surface-container-lowest border border-outline-variant rounded-lg text-label-md text-on-surface hover:bg-emerald-50 transition-colors">
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>
+                            Date Range
+                        </button>
+</div>
+</div>
+<!-- Bento Grid Layout for History -->
+<div class="grid grid-cols-12 gap-lg">
+<!-- Stats Card (Asymmetric) -->
+<div class="col-span-12 lg:col-span-4 bg-primary-container text-on-primary-container p-xl rounded-xl shadow-lg relative overflow-hidden">
+<div class="relative z-10">
+<span class="material-symbols-outlined text-[48px] opacity-40 mb-md">temp_preferences_custom</span>
+<h3 class="text-headline-md mb-xs">Social Momentum</h3>
+<p class="text-label-sm opacity-80 mb-lg leading-relaxed">You've had 14 meaningful interactions this week. Your "garden" is thriving!</p>
+<div class="flex items-center gap-lg">
+<div>
+<p class="text-[32px] font-extrabold">85%</p>
+<p class="text-label-sm uppercase tracking-wider opacity-70">Engagement</p>
+</div>
+<div class="w-[1px] h-12 bg-white/20"></div>
+<div>
+<p class="text-[32px] font-extrabold">+3</p>
+<p class="text-label-sm uppercase tracking-wider opacity-70">New Friends</p>
+</div>
+</div>
+</div>
+<div class="absolute -right-8 -bottom-8 w-40 h-40 bg-on-primary-container opacity-10 rounded-full blur-3xl"></div>
+</div>
+<!-- Main Table/List Container -->
+<div class="col-span-12 lg:col-span-8 bg-surface-container-lowest rounded-xl shadow-sm border border-emerald-50 overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead class="bg-emerald-50/50 border-b border-emerald-100">
+<tr>
+<th class="p-lg font-label-md text-primary uppercase tracking-widest text-[11px]">Date</th>
+<th class="p-lg font-label-md text-primary uppercase tracking-widest text-[11px]">Contact</th>
+<th class="p-lg font-label-md text-primary uppercase tracking-widest text-[11px]">Type</th>
+<th class="p-lg font-label-md text-primary uppercase tracking-widest text-[11px]">Notes</th>
+<th class="p-lg font-label-md text-primary uppercase tracking-widest text-[11px]"></th>
+</tr>
+</thead>
+<tbody class="divide-y divide-emerald-50">
+<!-- Row 1 -->
+<tr class="group hover:bg-emerald-50/20 transition-colors">
+<td class="p-lg whitespace-nowrap">
+<p class="text-label-md text-on-surface">3 days ago</p>
+<p class="text-label-sm text-outline">Oct 24, 2023</p>
+</td>
+<td class="p-lg">
+<div class="flex items-center gap-md">
+<img alt="John" class="w-8 h-8 rounded-full" data-alt="A clean, professional headshot of a friendly man named John with short hair and a subtle smile. The portrait is taken in soft daylight with a blurred office background, maintaining a sophisticated yet approachable look consistent with a high-end personal CRM design system." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAy-i0uHF0KFogcnQMwmxhAJDuzYwAVU-XZ-mFYklc5lqIc6Wy8-ezwqw3nY7xqb49YPDQHYJIJaDhDglQHA9vFsaso2Urmzhieg80UCUr4Pray0itna2aKwxJJ2qo4Dbmrx6SrHKoTmye00vS8BqwR70GbF6FgidjH28cBeAeE782AaTH8VzUJB8dpp2sizj-XJe0ON5C41m8PBQqTPHZ5DhkVKFjR5euwxWP2u7y_FaxLerQEtPLW1_Gb9Tj90jNtvrv7kVnJ34"/>
+<span class="font-label-md text-on-surface">John Bennett</span>
+</div>
+</td>
+<td class="p-lg">
+<span class="inline-flex items-center gap-xs px-sm py-[2px] bg-secondary-fixed text-on-secondary-fixed rounded-full text-label-sm">
+<span class="material-symbols-outlined text-[16px]">call</span>
+                                                Phone
+                                            </span>
+</td>
+<td class="p-lg max-w-xs">
+<p class="text-body-md text-on-surface-variant truncate">Caught up on his new job at the tech startup. Mentioned looking for a hiking partner next month.</p>
+</td>
+<td class="p-lg text-right">
+<button class="p-sm rounded-full text-outline hover:text-primary opacity-0 group-hover:opacity-100 transition-all">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="group hover:bg-emerald-50/20 transition-colors">
+<td class="p-lg whitespace-nowrap">
+<p class="text-label-md text-on-surface">Yesterday</p>
+<p class="text-label-sm text-outline">Oct 26, 2023</p>
+</td>
+<td class="p-lg">
+<div class="flex items-center gap-md">
+<img alt="Sarah" class="w-8 h-8 rounded-full" data-alt="A cheerful, high-resolution portrait of a woman named Sarah with long dark hair, wearing a casual linen shirt. The background is a minimalist, brightly lit home interior with hints of green indoor plants. The lighting is warm and natural, evoking a sense of calm and genuine connection." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqASh_u1_OGGpMuj3j402oT20zdjSNS1ZhfiETwjavQz0uecnKu5jHnDqQXd-gSNXK9oi6dxXLbBaWWp4hkT0iChjFLN8FwdQNte60PSd8XjPrATOmnInt3tlBGUwkyLYSH3lKnqMc3q7hOAe6bJJJvBiPXuuWFmdEJPCkwpuSzUTypPkLHcRQt0n3gnrP6ArIlxAThAFi79oa4pSQbLIjfkwO9mCwBRTVtqOLjtSdgUqNw2I7owa6M_b3pTjxygYaeHMviNgfIkM"/>
+<span class="font-label-md text-on-surface">Sarah Jenkins</span>
+</div>
+</td>
+<td class="p-lg">
+<span class="inline-flex items-center gap-xs px-sm py-[2px] bg-tertiary-fixed text-on-tertiary-fixed-variant rounded-full text-label-sm">
+<span class="material-symbols-outlined text-[16px]">chat_bubble</span>
+                                                Message
+                                            </span>
+</td>
+<td class="p-lg max-w-xs">
+<p class="text-body-md text-on-surface-variant truncate">Sent a quick text to check in on her marathon training. She's feeling confident!</p>
+</td>
+<td class="p-lg text-right">
+<button class="p-sm rounded-full text-outline hover:text-primary opacity-0 group-hover:opacity-100 transition-all">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="group hover:bg-emerald-50/20 transition-colors">
+<td class="p-lg whitespace-nowrap">
+<p class="text-label-md text-on-surface">Just now</p>
+<p class="text-label-sm text-outline">Oct 27, 2023</p>
+</td>
+<td class="p-lg">
+<div class="flex items-center gap-md">
+<img alt="Marcus" class="w-8 h-8 rounded-full" data-alt="A portrait of a young man named Marcus with a friendly gaze and a neatly trimmed beard. The image uses a soft focus on the background which appears to be a cozy cafe. The color palette is rich with soft amber and emerald tones, matching the empathetic and nurturing brand identity of the app." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtgiEtjqAu4O6vBsVp-9PTcMwE-mcTmjUWM3Zha2aknMZseplZPyUZiclicAp-IS8yzzb06TZrbIQJ7t0mm1S0HmGX-lElipX19hjtnLSKs9v6_jyAKKp0EBbJW3PRhLiZmo0y10d_GQn5LRMg4nk1omS1lRWE0I2Ep9rscj4gz6V9i2LRJ0rKTOPptkwTDHHOhXeRUOi0GbxuzsNrK04Gn-k_hjG663Tyy4XVGdhZkfahfjlR-lqItGE59QPEI2okkJ34xtbMInQ"/>
+<span class="font-label-md text-on-surface">Marcus Thorne</span>
+</div>
+</td>
+<td class="p-lg">
+<span class="inline-flex items-center gap-xs px-sm py-[2px] bg-primary-fixed text-on-primary-fixed rounded-full text-label-sm">
+<span class="material-symbols-outlined text-[16px]">groups</span>
+                                                In-person
+                                            </span>
+</td>
+<td class="p-lg max-w-xs">
+<p class="text-body-md text-on-surface-variant truncate">Coffee at The Beanery. Discussed the upcoming book club and shared some gardening tips.</p>
+</td>
+<td class="p-lg text-right">
+<button class="p-sm rounded-full text-outline hover:text-primary opacity-0 group-hover:opacity-100 transition-all">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-lg bg-surface-container-low/30 border-t border-emerald-50 flex items-center justify-between">
+<p class="text-label-sm text-outline">Showing 3 of 48 total interactions</p>
+<div class="flex gap-sm">
+<button class="w-8 h-8 rounded-lg flex items-center justify-center bg-white border border-outline-variant text-outline hover:text-primary hover:border-primary transition-all">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<button class="w-8 h-8 rounded-lg flex items-center justify-center bg-white border border-outline-variant text-outline hover:text-primary hover:border-primary transition-all">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Side Card - Quick Follow-ups -->
+<div class="col-span-12 lg:col-span-4 flex flex-col gap-lg">
+<div class="bg-white p-xl rounded-xl shadow-sm border border-emerald-50">
+<div class="flex items-center justify-between mb-lg">
+<h4 class="font-headline-md text-primary text-[18px]">Next Steps</h4>
+<span class="material-symbols-outlined text-secondary">tips_and_updates</span>
+</div>
+<div class="space-y-md">
+<div class="p-md rounded-lg bg-secondary-fixed/20 border-l-4 border-secondary flex items-start gap-md">
+<span class="material-symbols-outlined text-secondary mt-1">mail</span>
+<div>
+<p class="text-label-md text-on-surface">Email Maria</p>
+<p class="text-label-sm text-outline-variant">Last contact: 12 days ago</p>
+</div>
+</div>
+<div class="p-md rounded-lg bg-tertiary-fixed/20 border-l-4 border-tertiary-container flex items-start gap-md">
+<span class="material-symbols-outlined text-tertiary-container mt-1">cake</span>
+<div>
+<p class="text-label-md text-on-surface">Leo's Birthday</p>
+<p class="text-label-sm text-outline-variant">Coming up this Friday</p>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white p-xl rounded-xl shadow-sm border border-emerald-50 flex-1 relative overflow-hidden">
+<h4 class="font-headline-md text-primary text-[18px] mb-sm">Memories</h4>
+<p class="text-label-sm text-outline mb-lg leading-relaxed">Relive your favorite moments from last season.</p>
+<img alt="Friends laughing" class="w-full h-32 object-cover rounded-lg mb-md" data-alt="A beautiful, candid photograph of a diverse group of friends laughing together around a sun-drenched wooden picnic table in a lush, green backyard. The lighting is warm golden hour, creating long, soft shadows and a glowing atmosphere. The overall mood is nostalgic, joyful, and deeply connected, reinforcing the app's mission to nurture relationships." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAgZkwEmhSuASwjObDJvp-gvLtbc0-JqjoHaK1UYZTmVw1Tb9pCMkJtDUENwLfMMAePhPNdfoqdG2A72LF7fhcI8zmf6tc_P2eQPdoR8m8FAxHradR4k3wF3Qyj9NJJJeAjrpR8dcqYttfIviAZb7oX8mv-xyavGBBDv7DPe5IAsBwKBhSQy4R_6rtPC6u8aQhvN-Y83D1bIT2jvu3MJjaROyjgG9U7snVqteN1DeecnGpau27GXDB-TnhZW37PxJagzGLRqoXz_k"/>
+<p class="text-label-md text-on-surface">Summer Picnic with the Core Group</p>
+<p class="text-label-sm text-outline">July 15, 2023</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Contextual FAB (Restricted to Home/History as per guidance) -->
+<button class="fixed bottom-10 right-10 w-14 h-14 bg-primary text-on-primary rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-50">
+<span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 1;">add</span>
+</button>
+</body></html>
